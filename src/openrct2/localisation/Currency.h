@@ -26,10 +26,10 @@ namespace OpenRCT2
         char isoCode[4];
         // Rate is relative to 0.10 GBP
         int32_t rate;
-        CurrencyAffix affix_unicode;
-        utf8 symbol_unicode[kCurrencySymbolMaxSize];
-        CurrencyAffix affix_ascii;
-        char symbol_ascii[kCurrencySymbolMaxSize];
+        CurrencyAffix affixUnicode;
+        utf8 symbolUnicode[kCurrencySymbolMaxSize];
+        CurrencyAffix affixAscii;
+        char symbolAscii[kCurrencySymbolMaxSize];
         StringId stringId;
     };
 

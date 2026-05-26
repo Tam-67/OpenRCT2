@@ -47,11 +47,11 @@ namespace OpenRCT2
     void CurrencyLoadCustomCurrencyConfig()
     {
         CurrencyDescriptors[EnumValue(CurrencyType::custom)].rate = Config::Get().general.customCurrencyRate;
-        CurrencyDescriptors[EnumValue(CurrencyType::custom)].affix_unicode = Config::Get().general.customCurrencyAffix;
+        CurrencyDescriptors[EnumValue(CurrencyType::custom)].affixUnicode = Config::Get().general.customCurrencyAffix;
         if (!Config::Get().general.customCurrencySymbol.empty())
         {
             String::safeUtf8Copy(
-                CurrencyDescriptors[EnumValue(CurrencyType::custom)].symbol_unicode,
+                CurrencyDescriptors[EnumValue(CurrencyType::custom)].symbolUnicode,
                 Config::Get().general.customCurrencySymbol.c_str(), kCurrencySymbolMaxSize);
         }
     }

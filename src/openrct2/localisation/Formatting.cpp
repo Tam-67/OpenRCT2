@@ -417,12 +417,12 @@ namespace OpenRCT2
         }
 
         // Currency symbol
-        auto symbol = currencyDesc->symbol_unicode;
-        auto affix = currencyDesc->affix_unicode;
+        auto symbol = currencyDesc->symbolUnicode;
+        auto affix = currencyDesc->affixUnicode;
         if (!FontSupportsString(symbol, FontStyle::medium))
         {
-            symbol = currencyDesc->symbol_ascii;
-            affix = currencyDesc->affix_ascii;
+            symbol = currencyDesc->symbolAscii;
+            affix = currencyDesc->affixAscii;
         }
 
         // Currency symbol prefix
