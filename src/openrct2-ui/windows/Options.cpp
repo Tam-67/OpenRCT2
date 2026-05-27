@@ -1236,7 +1236,7 @@ namespace OpenRCT2::Ui::Windows
                 case WIDX_LANGUAGE_DROPDOWN:
                     for (size_t i = 1; i < LANGUAGE_COUNT; i++)
                     {
-                        gDropdown.items[i - 1] = Dropdown::MenuLabel(LanguagesDescriptors[i].native_name);
+                        gDropdown.items[i - 1] = Dropdown::MenuLabel(LanguagesDescriptors[i].nativeName);
                     }
                     ShowDropdown(widget, LANGUAGE_COUNT - 1);
                     gDropdown.items[LocalisationService_GetCurrentLanguage() - 1].setChecked(true);
@@ -1333,7 +1333,7 @@ namespace OpenRCT2::Ui::Windows
         void CulturePrepareDraw()
         {
             // Language
-            _dropdownCaption = LanguagesDescriptors[LocalisationService_GetCurrentLanguage()].native_name;
+            _dropdownCaption = LanguagesDescriptors[LocalisationService_GetCurrentLanguage()].nativeName;
             widgets[WIDX_LANGUAGE].setString(_dropdownCaption.c_str());
 
             // Currency: pounds, dollars, etc. (10 total)

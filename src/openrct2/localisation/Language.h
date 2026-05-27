@@ -74,8 +74,8 @@ namespace OpenRCT2
     struct LanguageDescriptor
     {
         const char* locale;
-        const utf8* english_name;
-        const utf8* native_name;
+        const utf8* englishName;
+        const utf8* nativeName;
         uint8_t fallback;
 #if !defined(DISABLE_TTF)
         TTFontFamily const* font_family;
