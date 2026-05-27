@@ -36,20 +36,20 @@ namespace OpenRCT2
         uint32_t _capacity;
         TTraits _traits;
 
-        static constexpr uint32_t FlagLocalStorage = (1u << 31);
+        static constexpr uint32_t kFlagLocalStorage = (1u << 31);
 
     public:
         explicit FormatBufferBase()
             : _storage{}
             , _buffer(_storage)
             , _size{}
-            , _capacity(FlagLocalStorage | static_cast<uint32_t>(StackSize))
+            , _capacity(kFlagLocalStorage | static_cast<uint32_t>(StackSize))
         {
         }
 
         ~FormatBufferBase()
         {
-            if (_capacity & FlagLocalStorage)
+            if (_capacity & kFlagLocalStorage)
                 return;
             delete[] _buffer;
         }
@@ -61,7 +61,7 @@ namespace OpenRCT2
 
         size_t capacity() const
         {
-            return _capacity & ~FlagLocalStorage;
+            return _capacity & ~kFlagLocalStorage;
         }
 
         void clear()
@@ -116,7 +116,7 @@ namespace OpenRCT2
 
         void append(const T* buf, size_t len)
         {
-            ensure_capacity(len);
+            ensureCapacity(len);
 
             std::copy(buf, buf + len, _buffer + _size);
 
@@ -125,11 +125,11 @@ namespace OpenRCT2
         }
 
     private:
-        void ensure_capacity(size_t additionalSize)
+        void ensureCapacity(size_t additionalSize)
         {
             const size_t curSize = size();
             const size_t curCapacity = capacity();
-            const bool isLocalStorage = _capacity & FlagLocalStorage;
+            const bool isLocalStorage = _capacity & kFlagLocalStorage;
 
             if (curSize + additionalSize < curCapacity)
                 return;
@@ -166,9 +166,9 @@ namespace OpenRCT2
 
             Token() = default;
             Token(FormatToken k, std::string_view s, uint32_t p = 0);
-            bool IsLiteral() const;
-            bool IsCodepoint() const;
-            codepoint_t GetCodepoint() const;
+            bool isLiteral() const;
+            bool isCodepoint() const;
+            codepoint_t getCodepoint() const;
         };
 
         struct iterator
@@ -184,7 +184,7 @@ namespace OpenRCT2
             iterator(std::string_view s, size_t i);
             bool operator==(iterator& rhs);
             bool operator!=(iterator& rhs);
-            Token CreateToken(size_t len);
+            Token createToken(size_t len);
             const Token* operator->() const;
             const Token& operator*();
             iterator& operator++();
@@ -199,7 +199,7 @@ namespace OpenRCT2
         iterator begin() const;
         iterator end() const;
 
-        std::string WithoutFormatTokens() const;
+        std::string withoutFormatTokens() const;
     };
 
     template<typename T>

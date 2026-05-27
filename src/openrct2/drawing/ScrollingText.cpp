@@ -1477,7 +1477,7 @@ static constexpr const int16_t* kScrollPositions[kMaxModes] = {
         {
             for (const auto& token : fmt)
             {
-                if (token.IsLiteral())
+                if (token.isLiteral())
                 {
                     CodepointView codepoints(token.text);
                     for (auto codepoint : codepoints)
@@ -1539,7 +1539,7 @@ static constexpr const int16_t* kScrollPositions[kMaxModes] = {
         auto fmt = FmtString(text);
         for (const auto& token : fmt)
         {
-            if (token.IsLiteral())
+            if (token.isLiteral())
             {
                 ttfBuffer.append(token.text);
             }

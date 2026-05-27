@@ -68,17 +68,17 @@ namespace OpenRCT2
     {
     }
 
-    bool FmtString::Token::IsLiteral() const
+    bool FmtString::Token::isLiteral() const
     {
         return kind == FormatToken::literal;
     }
 
-    bool FmtString::Token::IsCodepoint() const
+    bool FmtString::Token::isCodepoint() const
     {
         return kind == FormatToken::escaped;
     }
 
-    codepoint_t FmtString::Token::GetCodepoint() const
+    codepoint_t FmtString::Token::getCodepoint() const
     {
         if (kind == FormatToken::escaped)
         {
@@ -167,7 +167,7 @@ namespace OpenRCT2
                 i++;
             } while (i < str.size() && str[i] != '{' && str[i] != '}' && str[i] != '\n' && str[i] != '\r');
         }
-        current = CreateToken(i - index);
+        current = createToken(i - index);
     }
 
     bool FmtString::iterator::operator==(iterator& rhs)
@@ -180,7 +180,7 @@ namespace OpenRCT2
         return index != rhs.index;
     }
 
-    FmtString::Token FmtString::iterator::CreateToken(size_t len)
+    FmtString::Token FmtString::iterator::createToken(size_t len)
     {
         std::string_view sztoken = str.substr(index, len);
 
@@ -262,13 +262,13 @@ namespace OpenRCT2
         return iterator(_str, _str.size());
     }
 
-    std::string FmtString::WithoutFormatTokens() const
+    std::string FmtString::withoutFormatTokens() const
     {
         std::string result;
         result.reserve(_str.size() * 4);
         for (const auto& t : *this)
         {
-            if (t.IsLiteral())
+            if (t.isLiteral())
             {
                 result += t.text;
             }

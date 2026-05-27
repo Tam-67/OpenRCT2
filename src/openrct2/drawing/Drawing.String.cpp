@@ -161,7 +161,7 @@ namespace OpenRCT2::Drawing
         FmtString fmt(text);
         for (const auto& token : fmt)
         {
-            if (token.IsLiteral())
+            if (token.isLiteral())
             {
                 CodepointView codepoints(token.text);
                 for (auto codepoint : codepoints)
@@ -412,7 +412,7 @@ namespace OpenRCT2::Drawing
             for (const auto& token : fmt)
             {
                 bool doubleBreak = false;
-                if (token.IsLiteral())
+                if (token.isLiteral())
                 {
                     CodepointView codepoints(token.text);
                     for (auto it = codepoints.begin(); it != codepoints.end(); it++)
@@ -698,13 +698,13 @@ namespace OpenRCT2::Drawing
             FmtString fmt(text);
             for (const auto& token : fmt)
             {
-                if (token.IsLiteral())
+                if (token.isLiteral())
                 {
                     processStringLiteral(rt, token.text, info);
                 }
-                else if (token.IsCodepoint())
+                else if (token.isCodepoint())
                 {
-                    auto codepoint = token.GetCodepoint();
+                    auto codepoint = token.getCodepoint();
                     processStringCodepoint(rt, codepoint, info);
                 }
                 else
